@@ -201,3 +201,26 @@ def test_mixed_complex_enum_pyfunction_instance_empty(variant: enums.MixedComple
     assert isinstance(
         enums.do_mixed_complex_stuff(variant), enums.MixedComplexEnum.Nothing
     )
+
+@pytest.mark.parametrize(
+    "variant",
+    [enums.MixedComplexAndUnitEnum.Nothing()],
+)
+def test_more_mixed_complex_enum_pyfunction_instance_nothing(
+    variant: enums.MixedComplexEnum,
+):
+    assert isinstance(variant, enums.MixedComplexEnum.Nothing)
+    assert isinstance(
+        enums.do_mixed_complex_stuff(variant), enums.MixedComplexEnum.Empty
+    )
+
+
+@pytest.mark.parametrize(
+    "variant",
+    [enums.MixedComplexEnum.Empty()],
+)
+def test_mixed_complex_enum_pyfunction_instance_empty(variant: enums.MixedComplexEnum):
+    assert isinstance(variant, enums.MixedComplexEnum.Empty)
+    assert isinstance(
+        enums.do_mixed_complex_stuff(variant), enums.MixedComplexEnum.Nothing
+    )
